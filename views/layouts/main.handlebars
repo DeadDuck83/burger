@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/burger_styles.css" type="text/css" />
-		<title>Eat Da Burger</title>
-		<script src="https://code.jquery.com/jquery.js"></script>
-	</head>
-	<body>
-		{{{ body }}}
-	</body>
+	<link rel="stylesheet" href="/assets/css/burger_styles.css" type="text/css" />
+	<title>Eat Da Burger</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+	{{{ body }}}
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+
+
+	<script>
+
+		$(document).ready(function (e) {
+			// Make sure we wait to attach our handlers until the DOM is fully loaded.
+			$(function () {
+				// Devour state
+				$(".eat-burger").on("click", function (event) {
+					var id = $(this).data("id");
+					// var newDevoured = $(this).data("newdevoured");
+
+					var newelyDevoured = {
+						devoured: 1
+					};
+					console.log(newelyDevoured);
+					console.log("newely Devoured ^");
+					// Send the PUT request.
+					$.ajax("/api/burgers/" + id, {
+						type: "PUT",
+						data: newelyDevoured
+					}).then(
+						function () {
+							console.log("changed sleep to", newelyDevoured);
+							// Reload the page to get the updated list
+							location.reload();
+						}
+					);
+				});
+				// Burger Create
+				$(".create-form").on("submit", function (event) {
+					console.log("add request");
+					// Make sure to preventDefault on a submit event.
+					event.preventDefault();
+
+					var newBurger = {
+						burger_name: $("#burger-name").val().trim(),
+						devoured: $("[name=eaten]:checked").val().trim()
+					};
+
+					// Send the POST request.
+					$.ajax("/api/burgers", {
+						type: "POST",
+						data: newBurger
+					}).then(
+						function () {
+							console.log("created new burger");
+							// Reload the page to get the updated list
+							location.reload();
+						}
+					);
+				});
+
+			});
+
+
+		})
+
+	</script>
+</body>
+
 </html>

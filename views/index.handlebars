@@ -2,9 +2,30 @@
 
 <h2>Can you see the burgers?</h2>
 
-<div>
-  {{#each burgers}}
-  <h2>{{burger_name}}</h2>
 
-  {{/each}}
+{{#each burgers}}
+<div>
+  <h2>{{burger_name}}</h2>
+  {{> burger-eats/burger-block }}
 </div>
+{{/each}}
+
+<hr>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="burger-name">Burger Name:</label>
+    <input type="text" id="burger-name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="eaten">Hungry?</label>
+    <br>
+    <input type="radio" name="eaten" value="1">Eat Now?
+    <br>
+    <input type="radio" name="eaten" value="0"> Eat Later
+  </div>
+
+  <button type="submit">Add Burger</button>
+
+</form>
