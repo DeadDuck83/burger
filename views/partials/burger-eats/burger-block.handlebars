@@ -1,7 +1,11 @@
  {{#if devoured}}
 <span>so delicious</span>
-{{else}}
+{{/if}}
+
+
+
+{{#unless devoured}}
 <button class="eat-burger" data-id="{{id}}" data-newDevoured="{{devoured}}">
 	Eat me
 </button>
-{{/if}}
+{{/unless}}
