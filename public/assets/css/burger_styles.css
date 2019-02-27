@@ -18,3 +18,13 @@ h1,h2,h3,h4 {
     background-color: transparent;
     border:none;
 }
+.form-group {
+    margin-bottom: 1rem;
+    display: block;
+    float: left;
+    padding: 0 20px;
+    margin: 0;
+}
+input.inputRadio {
+    margin: 0 5px 0 10px;
+}

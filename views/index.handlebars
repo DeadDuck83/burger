@@ -3,60 +3,60 @@
 </div>
 <div class="container">
   <div class="row">
+    <div class="col-md-12 input-section">
+      <form class="create-form">
 
-    {{#each burgers}}
-    {{#if devoured}}
-    <div class="col-md-6">
+  <div class="form-group">
+    <label for="burger-name">Burger Name:</label>
+    <input type="text" id="burger-name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="eaten">Hungry?</label>
+    
+    <input class="inputRadio" type="radio" name="eaten" value="1">Eat Now?
+    
+    <input class="inputRadio" type="radio" name="eaten" value="0"> Eat Later
+  </div>
+
+  <button type="submit">Add Burger</button>
+
+</form>
+    </div>
+    <div class="col-md-12 text-center">
+      <img class="divider" src="assets/img/divider.png" alt="">
+    </div>
+
+    {{#each burgers}} {{#if devoured}}
+    <div class="col-md-3">
       <div class="card" style="width: 18rem;">
         <img src="assets/img/devoured.gif" class="card-img-top" />
         <div class="card-body">
           <p class="card-text">{{burger_name}}</p>
-          
+
         </div>
       </div>
     </div>
-    
-{{/if}}
- {{#unless devoured}}
-    <div class="col-md-6">
-      <div class="col-md-6">
-        <div class="card" style="width: 18rem;">
-          <img src="assets/img/burger-img1.gif" class="card-img-top" />
-          <div class="card-body">
-            <p class="card-text">{{burger_name}}</p>
-            {{> burger-eats/burger-block }}
-          </div>
+
+    {{/if}} {{#unless devoured}}
+
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src="assets/img/burger-img1.gif" class="card-img-top" />
+        <div class="card-body">
+          <p class="card-text">{{burger_name}}</p>
+          {{> burger-eats/burger-block }}
         </div>
       </div>
+
     </div>
-    {{/unless}}
-     {{/each}}
+    {{/unless}} {{/each}}
   </div>
 </div>
-{{!--  
-  {{#each burgers}}
-  <div>
-    <h2>{{burger_name}}</h2>
-    {{> burger-eats/burger-block }}
-  </div>
-  {{/each}} --}}
 
-  <hr>
-  <form class="create-form">
-
-    <div class="form-group">
-      <label for="burger-name">Burger Name:</label>
-      <input type="text" id="burger-name" name="name">
-    </div>
-
-    <div class="form-group">
-      <label for="eaten">Hungry?</label>
-      <br>
-      <input type="radio" name="eaten" value="1">Eat Now?
-      <br>
-      <input type="radio" name="eaten" value="0"> Eat Later
-    </div>
-
-    <button type="submit">Add Burger</button>
-
-  </form>
+{{!-- {{#each burgers}}
+<div>
+  <h2>{{burger_name}}</h2>
+  {{> burger-eats/burger-block }}
+</div>
+{{/each}} --}}
